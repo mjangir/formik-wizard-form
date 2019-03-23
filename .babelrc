@@ -1,3 +1,13 @@
 {
-  "presets": ["env", "react", "stage-0"]
+  "presets": ["env", "react", "stage-0"],
+  "env": {
+    "publish": {
+      "plugins": [
+        ["transform-rename-import",
+         { "original": "./style.scss", 
+           "replacement": "./style.css"
+         }],
+      ]
+    }
+  }
 }

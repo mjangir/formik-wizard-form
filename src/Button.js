@@ -14,14 +14,14 @@ const WizardButton = ({
     children ? (
       React.cloneElement(children, {
         onClick: !validator || validator.call(null) ? onClick : null,
-        disabled: !validator || !validator.call(null),
+        disabled: typeof validator === 'function' && !validator.call(null),
       })
     ) : (
       <button
         type={type}
         className={className}
         onClick={!validator || validator.call(null) ? onClick : null}
-        disabled={!validator || !validator.call(null)}
+        disabled={typeof validator === 'function' && !validator.call(null)}
       >
         {label || 'Next'}
       </button>

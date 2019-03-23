@@ -21,7 +21,7 @@ const ButtonsList = ({
               className="react-formik-wizard__footer__button react-formik-wizard__footer__button--previous"
               show={activeStepIndex > 0}
               onClick={onPreviousStep}
-              validator={validator}
+              label="Previous"
               {...child.props}
             />
           </div>
@@ -34,6 +34,7 @@ const ButtonsList = ({
             show={activeStepIndex < totalSteps}
             onClick={onNextStep}
             validator={validator}
+            label="Next"
             {...child.props}
           />
         );
@@ -46,6 +47,7 @@ const ButtonsList = ({
             onClick={onSubmit}
             validator={validator}
             type="submit"
+            label="Finish"
             {...child.props}
           />
         );

@@ -1,5 +1,5 @@
 {
-  "name": "react-formik-wizard",
+  "name": "formik-wizard-form",
   "version": "1.0.0",
   "description": "Painless wizard forms built over formik react library",
   "main": "dist/index.js",
@@ -7,15 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development",
     "lint": "eslint src -c .eslintrc.js --ext js,jsx",
-    "transpile": "babel src -d dist",
-    "prepublishOnly": "npm run transpile",
+    "transpile": "BABEL_ENV=publish babel src -d dist",
+    "preprocess": "node-sass ./src/style.scss ./dist/style.css",
+    "prepublishOnly": "npm run preprocess && npm run transpile",
     "build": "webpack --mode production",
     "deploy": "gh-pages -d examples/dist",
     "publish-demo": "npm run build && npm run deploy"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mjangir/react-formik-wizard.git"
+    "url": "git+https://github.com/mjangir/formik-wizard-form.git"
   },
   "keywords": [
     "formik",
@@ -28,9 +29,9 @@
   "author": "Manish Jangir",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mjangir/react-formik-wizard/issues"
+    "url": "https://github.com/mjangir/formik-wizard-form/issues"
   },
-  "homepage": "https://github.com/mjangir/react-formik-wizard#readme",
+  "homepage": "https://github.com/mjangir/formik-wizard-form#readme",
   "peerDependencies": {
     "react": "^16.8.5",
     "react-dom": "^16.8.5"
@@ -40,9 +41,11 @@
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-rename-import": "^2.3.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
     "eslint": "^5.15.3",
     "eslint-config-airbnb": "^17.1.0",
@@ -52,6 +55,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "formik": "^1.5.1",
+    "gh-pages": "^2.0.1",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.11.0",
     "prettier": "^1.16.4",
