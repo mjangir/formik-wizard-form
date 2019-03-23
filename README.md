@@ -90,10 +90,10 @@ This must be the root component of your render function and pass all render prop
 
 #### Step
 `Step` is the actual page component
-|        Prop Name        |Value                          |Default Value                         |
+|        Prop Name        |Value |Default Value |
 |----------------|-------------------------------|-----------------------------|
-|title|Title of the step            |Must be provided            |
-|component|Valid React component class or function            |Must ber provided            |
+|title|Title of the step|Required|
+|component|Valid React component class or function|Required|
 
 #### ButtonsList
 Root component of your wizard buttons. The children of `ButtonsList` should be the following:
