@@ -1,0 +1,119 @@
+$brand-primary: #ff8a24;
+$brand-primary-dark: #f27c2e;
+$white: #fff;
+$black: #000;
+$grey-light: #dbdbdb;
+
+%remain-steps{
+  &:before {
+    content: counter(stepNum);
+    font-family: inherit;
+    font-weight: 700;
+  }
+  &:after{
+    background-color: $grey-light;
+  }
+}
+
+.react-formik-wizard {
+  &__step-tabs {
+    padding: 10px;
+    &__tab-list {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      padding-left: 0;
+      > li{
+        counter-increment: stepNum;
+        text-align: center;
+        display: table-cell;
+        position: relative;
+        color: $brand-primary;
+        z-index: 1;
+    
+        &:before{
+          content: '\f00c';
+          content: '\2713;';
+          content: '\10003';
+          content: '\10004';
+          content: '\2713';
+          display: block;
+          margin: 0 auto 4px;
+          background-color: $white;
+          width: 36px;
+          height: 36px;
+          line-height: 36px;
+          text-align: center;
+          font-weight: bold;
+          border: {
+            width: 1px;
+            style: solid;
+            color: $brand-primary;
+            radius: 50%;
+          }
+        }
+        &:after{
+          content: '';
+          height: 1px;
+          width: 100%;
+          background-color: $brand-primary;
+          position: absolute;
+          top: 18px;
+          left: 50%;
+          z-index: -1;
+        }
+        &:last-child{
+          &:after{
+            display: none;
+          }
+        }
+    
+        &.is-active{
+          @extend %remain-steps;
+          &:before{
+            background-color: $white;
+            border-color: $brand-primary;
+          }
+    
+          ~ li{
+            color: $black;
+            @extend %remain-steps;
+            &:before{
+              background-color: $grey-light;
+              border-color: $grey-light;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__page {
+    padding: 10px;
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    &__button {
+      -webkit-border-radius: 5;
+      -moz-border-radius: 5;
+      border-radius: 5px;
+      font-family: Arial;
+      color: $white;
+      font-size: 14px;
+      background: $brand-primary;
+      border-color: $brand-primary;
+      padding: 10px 10px 10px 10px;
+      text-decoration: none;
+      cursor: pointer;
+      &:hover {
+        background: $brand-primary-dark;
+        text-decoration: none;
+      }
+      &[disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

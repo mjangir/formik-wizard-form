@@ -1,0 +1,14 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+}
+form {
+  margin: 0;
+  border: 1px solid #ccc;
+}
+pre {
+  font-size: 1rem !important;
+  text-align: left;
+}

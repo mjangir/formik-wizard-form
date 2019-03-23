@@ -1,0 +1,70 @@
+{
+  "name": "react-formik-wizard",
+  "version": "1.0.0",
+  "description": "Painless wizard forms built over formik react library",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --mode development",
+    "lint": "eslint src -c .eslintrc.js --ext js,jsx",
+    "transpile": "babel src -d dist",
+    "prepublishOnly": "npm run transpile",
+    "build": "webpack --mode production",
+    "deploy": "gh-pages -d examples/dist",
+    "publish-demo": "npm run build && npm run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjangir/react-formik-wizard.git"
+  },
+  "keywords": [
+    "formik",
+    "wizard",
+    "formik-wizard",
+    "wizard-form",
+    "forms",
+    "react-forms"
+  ],
+  "author": "Manish Jangir",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjangir/react-formik-wizard/issues"
+  },
+  "homepage": "https://github.com/mjangir/react-formik-wizard#readme",
+  "peerDependencies": {
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^2.1.1",
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "formik": "^1.5.1",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "prettier": "^1.16.4",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1",
+    "yup": "^0.27.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
+  }
+}
