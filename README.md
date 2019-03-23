@@ -90,6 +90,7 @@ This must be the root component of your render function and pass all render prop
 
 #### Step
 `Step` is the actual page component
+
 |        Prop Name        |Value |Default Value |
 |----------------|-------------------------------|-----------------------------|
 |title|Title of the step|Required|
