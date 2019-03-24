@@ -58,7 +58,7 @@ The provider `FormikWizardProvider` gives a `getValidators` function in the rend
     <FormikWizardProvider {...props}>
 	    {({getValidators, ...otherProps}) => (
 		    <Wizard {...otherProps}>
-			    <StepsList validators=[null, validateContactInfo, validateAddressInfo]>
+			    <StepsList validators={getValidators([null, validateContactInfo, validateAddressInfo])}>
 				    ...// All the Step components			
 			    </StepsList>
 			    <ButtonsList>
