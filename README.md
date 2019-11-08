@@ -11,7 +11,7 @@ Formik Wizard Form is stepper form component built over [Formik](https://github.
 
 ## How To Use:
 
-Using formik wizard form is dead simple. Import all of its helper components and arrange them in a particular sequence. It contains a root component called `FormikWizardProvider` which uses `Render Props` , `Compound Components` and `Prop Getters` patterns to render its children components.
+Using formik wizard form is quite easy. Import all of its helper components and arrange them in a particular sequence. It contains a root component called `FormikWizardProvider` which uses `Render Props` , `Compound Components` and `Prop Getters` patterns to render its children components.
 
     import {
 		FormikWizardProvider,
