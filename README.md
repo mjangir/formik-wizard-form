@@ -1,114 +1,50 @@
 # Formik Wizard Form
 
-Formik Wizard Form is stepper form component built over [Formik](https://github.com/jaredpalmer/formik) (the most famous form library in react world). Now create your form wizards in a nice and declarative way.
+![npm type definitions](https://img.shields.io/npm/types/typescript)
+![npm](https://img.shields.io/npm/v/formik-wizard-form)
+[![compressed size](https://github.com/mjangir/formik-wizard-form/actions/workflows/size.yml/badge.svg)](https://github.com/mjangir/formik-wizard-form/actions/workflows/size.yml)
+[![build](https://github.com/mjangir/formik-wizard-form/actions/workflows/test.yml/badge.svg)](https://github.com/mjangir/formik-wizard-form/actions/workflows/test.yml)
+[![e2e tests](https://github.com/mjangir/formik-wizard-form/actions/workflows/integration.yml/badge.svg)](https://github.com/mjangir/formik-wizard-form/actions/workflows/integration.yml)
+![GitHub](https://img.shields.io/github/license/mjangir/formik-wizard-form?label=license)
 
+## Getting Started
 
-## Installation:
+Formik wizard form is a library which lets you build multistep form wizards in React with ease. It has been written over the famous form library formik and provides the enhanced versions of formik's `<Formik />` and `useFormik` hook. Formik wizard form requires few additional props along with `<Formik />` original props as well as adds some properties to the render props object.
 
-    npm install --save formik-wizard-form
+Apart from that, the library is style or css framework agnostic and leaves the rendering part completely up to you. It just provides render props and you build your UI out of them.
 
-## [Demo](https://mjangir.github.io/formik-wizard-form)
+For more information on usage, please refer to the How To Use and Examples section.
 
-## How To Use:
+## How To Install
 
-Using formik wizard form is quite easy. Import all of its helper components and arrange them in a particular sequence. It contains a root component called `FormikWizardProvider` which uses `Render Props` , `Compound Components` and `Prop Getters` patterns to render its children components.
+Install the package from npm or yarn registry.
 
-    import {
-		FormikWizardProvider,
-		Wizard,
-		StepsList,
-		Step,
-		ButtonsList,
-		PreviousButton,
-		NextButton,
-		SubmitButton
-	} from  "formik-wizard-form";
-	import BasicDetails './BasicDetails'; // form for basic details
-	import ContactDetails './ContactDetails'; // form for contact info
-	import AddressDetails './AddressDetails'; // form for address info
-	
-	const UserForm = (props) => (
-		<FormikWizardProvider {...props}>
-			{(renderProps) => (
-				<Wizard {...renderProps}>
-					<StepsList>
-						<Step component={BasicDetails} title="Basic Details" />
-						<Step component={ContactDetails} title="Contact Details" />
-						<Step component={AddressDetails} title="Address Details" />
-					</StepsList>
-					<ButtonsList>
-						<PreviousButton />
-						<NextButton />
-						<SubmitButton />
-					</ButtonsList>
-				</Wizard>
-			)}
-		</FormikWizardProvider>
-	);
-	// Finally wrap this form in withFormik higher order component given by formik
-	const ActualForm = withFormik(....)(UserForm);
-	
-	<ActualForm /> // This is wizard with 3 steps
-Thats it. It will render the wizard now.
+### Install From Yarn
 
-## How To Validate Each Step
+```bash
+yarn add formik-wizard-form
+```
 
-The provider `FormikWizardProvider` gives a `getValidators` function in the render props which can be used by `StepsList` component as a prop called `validators`. Refer the following line of code:
+### Install From NPM
 
-    <FormikWizardProvider {...props}>
-	    {({getValidators, ...otherProps}) => (
-		    <Wizard {...otherProps}>
-			    <StepsList validators={getValidators([null, validateContactInfo, validateAddressInfo])}>
-				    ...// All the Step components			
-			    </StepsList>
-			    <ButtonsList>
-			    ...	// Button components
-				</ButtonsList>
-			</Wizard>
-		)}
-	</FormikWizardProvider>
-In the above code, we have passed a validator function for each step. The validator function should return either `true` or `false`. Each validator is passed all the `formik` props like **errors** and **touched**.  If any of your step doesn't have any validations, just pass `null` at that index. The order of validators is very important.
+```bash
+npm install formik-wizard-form --save
+```
 
-**Example Validator**
+## How To Use?
 
-    function validateContactInfo({ errors }) {
-	    return !errors.email && !errors.phone;
-	}
+Formik wizard form exports two components `<FormWizard />` and `useFormikWizard` similar to Formik's `<Formik />` and `useFormik` hook and their original props have been left untouched. Rather they require you to provide few additional props to create a form wizard.
 
-## Helper Components
+```javascript
+import { FormikWizard, useFormikWizard } from 'formik-wizard-form';
+```
 
-#### FormikWizardProvider
-This the root component which accepts a function as children and that function is called with all the props received from `withFormik` HOC. These props can be passed to further components.
+## Visit [formikwizard.manishjangir.com](https://formikwizard.manishjangir.com) for docs and examples!
 
-#### Wizard
-This must be the root component of your render function and pass all render props in it. Refer the example :blush:
+## Based On
 
-#### StepsList
-`StepsList` is the parent of all of your step pages.
+[Formik](https://github.com/formium/formik)
 
-|        Prop Name        |Value                          |Default Value                         |
-|----------------|-------------------------------|-----------------------------|
-|validators|Array of validator functions            |[]            |
+## Maintainers
 
-#### Step
-`Step` is the actual page component
-
-|        Prop Name        |Value |Default Value |
-|----------------|-------------------------------|-----------------------------|
-|title|Title of the step|Required|
-|component|Valid React component class or function|Required|
-
-#### ButtonsList
-Root component of your wizard buttons. The children of `ButtonsList` should be the following:
-#### PreviousButton
-This component renders Previous button of the wizard. You can also provide your own button component as its children. The `onClick` and `disabled` props will be automatically applied to your custom button if any.
-#### NextButton
-This component renders Next button of the wizard. You can also provide your own button component as its children. The `onClick` and `disabled` props will be automatically applied to your custom button if any.
-#### SubmitButton
-This component renders Submit button of the wizard. You can also provide your own button component as its children. Hitting the submit button will trigger the `onSubmit` of `withFormik` HOC.
-
-### Based On
-[Formik](https://github.com/jaredpalmer/formik)
-
-### Maintainers
 [Manish Jangir](https://github.com/mjangir)

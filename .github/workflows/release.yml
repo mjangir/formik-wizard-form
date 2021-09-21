@@ -1,0 +1,33 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+      - next
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.repository == 'mjangir/formik-wizard-form'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v2
+        with:
+          version: 12.x
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn install --frozen-lockfile --ignore-scripts
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@master
+        with:
+          commit: 'chore: release package(s)'
+          title: 'chore: release package(s)'
+          publish: yarn release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,74 +1,131 @@
 {
   "name": "formik-wizard-form",
   "version": "1.0.0",
-  "description": "Painless wizard forms built over formik react library",
+  "description": "Create stepper forms over formik with ease",
   "main": "dist/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development",
-    "lint": "eslint src -c .eslintrc.js --ext js,jsx",
-    "transpile": "BABEL_ENV=publish babel src -d dist",
-    "preprocess": "node-sass ./src/style.scss ./dist/style.css",
-    "prepublishOnly": "npm run preprocess && npm run transpile",
-    "build": "webpack --mode production",
-    "deploy": "gh-pages -d examples/dist",
-    "publish-demo": "npm run build && npm run deploy"
-  },
+  "module": "dist/formik-wizard-form.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mjangir/formik-wizard-form.git"
   },
-  "keywords": [
-    "formik",
-    "wizard",
-    "formik-wizard",
-    "wizard-form",
-    "forms",
-    "react-forms"
-  ],
-  "author": "Manish Jangir",
+  "author": "Manish Jangir <mjangir70@gmail.com> (https://manishjangir.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mjangir/formik-wizard-form/issues"
   },
-  "homepage": "https://github.com/mjangir/formik-wizard-form#readme",
+  "homepage": "http://formwizard.manishjangir.com",
+  "keywords": [
+    "formik",
+    "formik wizard",
+    "formik stepper form",
+    "formik multistep form",
+    "formik form wizard",
+    "form",
+    "wizard",
+    "react form wizard",
+    "react stepper form",
+    "stepper"
+  ],
+  "scripts": {
+    "postinstall": "husky install",
+    "changeset": "changeset",
+    "release": "changeset publish",
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom",
+    "test:watch": "npm run test -- --watchAll",
+    "lint": "tsdx lint",
+    "lint:staged": "lint-staged",
+    "lint:commit": "commitlint",
+    "commit": "git-cz",
+    "format": "prettier --write 'src/**/*' 'website/**/*.{ts,tsx,js,jsx,md,mdx}'",
+    "cypress": "cypress run",
+    "cypress:open": "cypress open",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "prepublish": "yarn build",
+    "start:app": "yarn build && yarn --cwd . link && yarn --cwd node_modules/react link && yarn --cwd ./app link react formik-wizard-form && yarn --cwd ./app && yarn --cwd ./app run dev"
+  },
+  "size-limit": [
+    {
+      "path": "dist/formik-wizard-form.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/formik-wizard-form.esm.js",
+      "limit": "10 KB"
+    }
+  ],
   "peerDependencies": {
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "formik": ">=2.0.1",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-rename-import": "^2.3.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "cross-env": "^5.2.0",
-    "css-loader": "^2.1.1",
-    "eslint": "^5.15.3",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.12.4",
-    "formik": "^1.5.1",
-    "gh-pages": "^2.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.11.0",
-    "prettier": "^1.16.4",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1",
-    "yup": "^0.27.0"
+    "@changesets/changelog-github": "^0.4.1",
+    "@changesets/cli": "^2.17.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@size-limit/preset-small-lib": "^5.0.3",
+    "@testing-library/cypress": "^8.0.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "@types/jest": "^27.0.1",
+    "@types/react": "^17.0.21",
+    "@types/react-dom": "^17.0.9",
+    "@types/testing-library__jest-dom": "^5.14.1",
+    "commitizen": "^4.2.4",
+    "cypress": "^8.4.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "formik": "^2.2.9",
+    "husky": "^7.0.0",
+    "jest-environment-jsdom-sixteen": "^2.0.0",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.3",
+    "yup": "^0.32.9"
   },
-  "dependencies": {
-    "classnames": "^2.2.6"
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,md,mdx,js,jsx}": [
+      "npm run format",
+      "npm run lint"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setupTests.ts"
+    ],
+    "modulePaths": [
+      "<rootDir>/src"
+    ],
+    "testPathIgnorePatterns": [
+      "cypress"
+    ],
+    "testEnvironment": "jest-environment-jsdom-sixteen"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
