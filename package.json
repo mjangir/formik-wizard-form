@@ -31,7 +31,9 @@
     "stepper"
   ],
   "scripts": {
-    "postinstall": "husky install",
+    "_postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable",
     "changeset": "changeset",
     "release": "changeset publish",
     "start": "tsdx watch",
@@ -42,7 +44,7 @@
     "lint:staged": "lint-staged",
     "lint:commit": "commitlint",
     "commit": "git-cz",
-    "format": "prettier --write 'src/**/*' 'website/**/*.{ts,tsx,js,jsx,md,mdx}'",
+    "format": "prettier --write src/**/* website/**/*.{ts,tsx,js,jsx,md,mdx}",
     "cypress": "cypress run",
     "cypress:open": "cypress open",
     "size": "size-limit",
@@ -85,6 +87,7 @@
     "husky": "^7.0.0",
     "jest-environment-jsdom-sixteen": "^2.0.0",
     "lint-staged": "^11.1.2",
+    "pinst": "^2.1.6",
     "prettier": "^2.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

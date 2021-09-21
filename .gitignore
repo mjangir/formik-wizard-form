@@ -13,6 +13,7 @@ dist/
 build/
 cypress/videos
 cypress/screenshots
+.history
 
 # Dot files
 .DS_Store
