@@ -57,7 +57,7 @@ validateOnNext is a boolean flag which controls whether to by pass the form vali
 
 children prop type is the same as formik but to render stepper forms, it must be a function which will get `RenderProps` as its arguments.
 
-If you provide `children` as a function, it will be provided the following arguments in return along with the standard/original formik render props.
+If you provide `children` as a function, it will provide the following arguments in return along with the standard/original formik render props.
 
 ```typescript
 interface RenderProps extends FormikProps<FormikValues> {
