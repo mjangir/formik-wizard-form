@@ -1,6 +1,6 @@
 {
   "name": "formik-wizard-form",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Create stepper forms over formik with ease",
   "main": "dist/index.js",
   "module": "dist/formik-wizard-form.esm.js",
