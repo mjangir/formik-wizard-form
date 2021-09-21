@@ -1,8 +1,0 @@
-# .npmignore 
-src
-examples
-.babelrc
-.eslintrc
-.prettierrc
-.gitignore
-webpack.config.js

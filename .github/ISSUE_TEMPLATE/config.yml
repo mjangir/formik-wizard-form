@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question
+    url: https://github.com/mjangir/formik-wizard-form/discussions
+    about: Ask questions and discuss with other community members
+  - name: Join Discord
+    url: https://discord.gg/GaezX3M52w
+    about: Chat with other community members in real-time
