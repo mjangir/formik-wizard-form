@@ -37,6 +37,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
     themeConfig:
       /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
+        hideableSidebar: true,
         navbar: {
           title: 'Formik Form Wizard',
           logo: {
