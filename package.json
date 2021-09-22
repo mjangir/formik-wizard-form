@@ -44,7 +44,7 @@
     "lint:staged": "lint-staged",
     "lint:commit": "commitlint",
     "commit": "git-cz",
-    "format": "prettier --write src/**/* website/**/*.{ts,tsx,js,jsx,md,mdx}",
+    "format": "prettier --write 'src/**/*' 'website/**/*.{ts,tsx,js,jsx,md,mdx}'",
     "cypress": "cypress run",
     "cypress:open": "cypress open",
     "size": "size-limit",
