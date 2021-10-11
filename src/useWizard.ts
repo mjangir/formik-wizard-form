@@ -1,10 +1,11 @@
 import { useState, useCallback } from 'react';
 import { Step } from './types';
 import { isFunction } from './utils';
+import {FormikValues} from "formik";
 
-const useWizard = (
+const useWizard = <T extends FormikValues>(
   activeStepIndex: number,
-  steps: Step[],
+  steps: Step<T>[],
   validateOnNext: boolean
 ) => {
   const total = steps.length;
@@ -20,7 +21,7 @@ const useWizard = (
     () => setCurrentStep(Math.min(currentStep + 1, total - 1)),
     [setCurrentStep, currentStep, total]
   );
-  const stepObj: Step = steps[currentStep];
+  const stepObj: Step<T> = steps[currentStep];
   const { beforePrev, beforeNext } = stepObj;
 
   const handlePrev = useCallback(
