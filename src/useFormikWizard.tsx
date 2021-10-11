@@ -1,15 +1,15 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import {FormikValues, useFormik} from 'formik';
 import { useWizard } from './useWizard';
 import { WizardProps, Step } from './types';
 
-const useFormikWizard = ({
+const useFormikWizard = <T extends FormikValues>({
   activeStepIndex = 0,
   validateOnNext = true,
   steps,
   children,
   ...props
-}: WizardProps) => {
+}: WizardProps<T>) => {
   const {
     currentStepIndex,
     isPrevDisabled,
@@ -18,9 +18,9 @@ const useFormikWizard = ({
     handlePrev,
     handleNext,
   } = useWizard(activeStepIndex, steps, validateOnNext);
-  const currentStep: Step = steps[currentStepIndex];
+  const currentStep: Step<T> = steps[currentStepIndex];
   const { component: StepComponent, validationSchema } = currentStep;
-  const formik = useFormik({ ...props, validationSchema });
+  const formik = useFormik<T>({ ...props, validationSchema });
 
   return {
     ...formik,
