@@ -24,14 +24,17 @@ const useFormikWizard = ({
 
   return {
     ...formik,
-    handlePrev: handlePrev(formik),
+    handlePrev: async () => {
+      await handlePrev(formik)();
+      await formik.validateForm();
+    },
     handleNext: handleNext(formik),
     isFirstStep,
     isLastStep,
     currentStepIndex,
     isPrevDisabled,
     isNextDisabled: (validateOnNext && !formik.isValid) || false,
-    renderComponent: () => <StepComponent {...formik} />,
+    renderComponent: () => <StepComponent {...formik} key={currentStepIndex} />,
   };
 };
 
