@@ -1,5 +1,11 @@
 # formik-wizard-form
 
+## 2.0.2
+
+### Patch Changes
+
+- [#19](https://github.com/mjangir/formik-wizard-form/pull/19) [`59fa9b2`](https://github.com/mjangir/formik-wizard-form/commit/59fa9b2e057a22de122d162b1308054a81e202fd) Thanks [@mjangir](https://github.com/mjangir)! - Fixed next button disabled issue when navigating to previous step
+
 ## 2.0.1
 
 ### Patch Changes
