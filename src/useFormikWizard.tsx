@@ -24,7 +24,10 @@ const useFormikWizard = ({
 
   return {
     ...formik,
-    handlePrev: handlePrev(formik),
+    handlePrev: async () => {
+      await handlePrev(formik)();
+      await formik.validateForm();
+    },
     handleNext: handleNext(formik),
     isFirstStep,
     isLastStep,

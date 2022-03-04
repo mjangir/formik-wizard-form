@@ -26,7 +26,10 @@ const FormikWizard = ({
       {typeof children === 'function'
         ? formikBag => {
             const wizardProps = {
-              handlePrev: handlePrev(formikBag),
+              handlePrev: async () => {
+                await handlePrev(formikBag)();
+                await formikBag.validateForm();
+              },
               handleNext: handleNext(formikBag),
               isFirstStep,
               isLastStep,
