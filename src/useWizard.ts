@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { setNestedObjectValues } from 'formik';
 import { Step } from './types';
 import { isFunction } from './utils';
 
@@ -48,6 +49,7 @@ const useWizard = (
 
       if (validateOnNext) {
         const errors = await formikBag.validateForm();
+        formikBag.setTouched(setNestedObjectValues(errors, true));
         isValid = Object.keys(errors).length === 0;
       }
 
