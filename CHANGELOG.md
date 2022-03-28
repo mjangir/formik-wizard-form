@@ -1,5 +1,11 @@
 # formik-wizard-form
 
+## 2.1.0
+
+### Minor Changes
+
+- [#22](https://github.com/mjangir/formik-wizard-form/pull/22) [`aed5c6f`](https://github.com/mjangir/formik-wizard-form/commit/aed5c6f77346dbf5e6213475f43962b051089e7c) Thanks [@mjangir](https://github.com/mjangir)! - Passed current step index to wizard components as prop
+
 ## 2.0.2
 
 ### Patch Changes
