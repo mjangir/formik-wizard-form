@@ -36,7 +36,12 @@ const FormikWizard = ({
               currentStepIndex,
               isPrevDisabled,
               isNextDisabled: (validateOnNext && !formikBag.isValid) || false,
-              renderComponent: () => <StepComponent {...formikBag} />,
+              renderComponent: () => (
+                <StepComponent
+                  {...formikBag}
+                  currentStepIndex={currentStepIndex}
+                />
+              ),
             };
 
             return children({

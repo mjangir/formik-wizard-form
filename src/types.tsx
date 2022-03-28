@@ -19,7 +19,9 @@ export type Step = {
   ) => Promise<any>;
 
   /** React functional or class component */
-  component: React.ComponentType<FormikProps<FormikValues>>;
+  component: React.ComponentType<
+    FormikProps<FormikValues> & { currentStepIndex: number }
+  >;
 };
 
 export interface RenderProps extends FormikProps<FormikValues> {
