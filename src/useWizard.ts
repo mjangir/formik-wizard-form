@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Step } from './types';
 import { isFunction } from './utils';
 
@@ -12,6 +12,12 @@ const useWizard = (
   const isPrevDisabled: boolean = currentStep === 0;
   const isFirstStep: boolean = currentStep === 0;
   const isLastStep: boolean = currentStep >= total - 1;
+  useEffect(
+    () => {
+      setCurrentStep(activeStepIndex);
+    },
+    [setCurrentStep, activeStepIndex]
+  );
   const goToPrev = useCallback(
     () => setCurrentStep(Math.max(0, currentStep - 1)),
     [setCurrentStep, currentStep]
