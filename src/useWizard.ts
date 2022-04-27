@@ -15,7 +15,7 @@ const useWizard = (
   useEffect(
     () => {
       setCurrentStep(activeStepIndex);
-    }
+    },
     [setCurrentStep, activeStepIndex]
   );
   const goToPrev = useCallback(
