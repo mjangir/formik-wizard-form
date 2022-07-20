@@ -1,26 +1,26 @@
 import { FormikConfig, FormikProps, FormikValues } from 'formik';
 
-export type Step = {
+export type Step<T extends FormikValues> = {
   /** Validation schema object for the current step */
   validationSchema?: any | (() => any);
 
   /** Handler to be called before moving to previous step */
   beforePrev?: (
-    values: FormikValues,
-    formikBag: FormikProps<FormikValues>,
+    values: T,
+    formikBag: FormikProps<T>,
     currentStepIndex: number
   ) => Promise<any>;
 
   /** Handler to be called before moving to next step */
   beforeNext?: (
-    values: FormikValues,
-    formikBag: FormikProps<FormikValues>,
+    values: T,
+    formikBag: FormikProps<T>,
     currentStepIndex: number
   ) => Promise<any>;
 
   /** React functional or class component */
   component: React.ComponentType<
-    FormikProps<FormikValues> & { currentStepIndex: number }
+    FormikProps<T> & { currentStepIndex: number }
   >;
 };
 
