@@ -7,8 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   module.exports = {
     title: 'Formik Form Wizard',
     tagline: 'Build stepper forms over Formik with ease',
-    url: 'https://formik-wizard.manishjangir.com',
-    baseUrl: '/',
+    url: 'https://mjangir.github.io/formik-wizard',
+    baseUrl: '/formik-wizard-form/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',
